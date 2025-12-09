@@ -1,0 +1,479 @@
+/* --- Page-Specific Reset (Replaces Universal Reset) --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; 
+    box-sizing: border-box; 
+}
+
+/* General Page and Container Styling */
+.home-container {
+    min-height: 100vh;
+    background-color: #1A1A2E;
+    color: #E0F7FA;
+}
+
+/* --- Top Navigation Bar Styling --- */
+.top-nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: rgb(22, 100, 244);
+    color: white;
+    box-shadow: 0 0 18px rgba(22, 100, 244, 1);
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0;
+    z-index: 1000;
+}
+
+/* Logo Styling */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    font-size: 28px;
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.logo-title {
+    color: white;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+    margin: 0; /* Manual reset for the h1/h2/etc. title */
+}
+
+.nav-content-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-container {
+    width: 300px; 
+}
+
+/* Search Container Styling */
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: #2C3E50;
+    border-radius: 8px;
+    border: 1px solid rgb(118, 163, 247);
+    transition: all 0.3s;
+}
+
+.search-input-wrapper:focus-within {
+    background-color: #1A1A2E;
+    box-shadow: 0 0 25px rgb(118, 163, 247);
+    border-color: transparent;
+}
+
+.search-icon-wrapper {
+    margin-right: 8px;
+}
+
+.search-icon {
+    margin-right: 8px;
+    font-size: 18px;
+    color: rgb(118, 163, 247);
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    padding: 0;
+    font-size: 16px;
+    color: #E0F7FA;
+    background-color: transparent;
+}
+
+.search-input::placeholder {
+    color: rgba(224, 247, 250, 0.6);
+}
+
+/* New Note Button Styling */
+.new-note-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: rgb(118, 163, 247);
+    color: #1A1A2E;
+    transition: all 0.2s;
+    box-shadow: 0 0 5px rgb(118, 163, 247);
+}
+
+.new-note-btn:hover {
+    background-color: white;
+    color: #1A1A2E;
+    box-shadow: 0 0 20px rgb(118, 163, 247);
+}
+
+/* --- Main Layout and Side Nav Styling --- */
+
+.main-layout {
+    padding-top: 70px; 
+    margin-left: 250px; 
+    min-height: calc(100vh - 70px); 
+    display: block; 
+}
+
+/* Side Navigation Bar Styling */
+.side-nav-bar {
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    position: fixed; 
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    z-index: 900;
+    background-color: #1A1A2E;
+    border-right: 1px solid #2C3E50;
+}
+
+/* Styling for Top Navigation Group */
+.side-nav-top {
+    padding-top: 20px; 
+    margin-bottom: 10px; 
+}
+
+/* Styling for Bottom Navigation Group */
+.side-nav-bottom {
+    padding-bottom: 20px;
+    border-top: 1px solid #2C3E50; 
+    padding-top: 10px;
+}
+
+/* Individual Navigation Link Styling */
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    color: #E0F7FA;
+    transition: all 0.2s;
+}
+
+/* Link Hover State */
+.nav-link:hover {
+    background-color: rgba(118, 163, 247, 0.1);
+    color: rgb(118, 163, 247);
+    border-left: 5px solid rgb(118, 163, 247);
+    padding-left: 25px;
+    box-shadow: inset 5px 0 10px -5px rgba(118, 163, 247, 0.5);
+}
+
+/* Active Link State (Deep Blue Neon) */
+.nav-link.active {
+    background-color: rgba(22, 100, 244, 0.2);
+    color: rgb(22, 100, 244);
+    border-left: 5px solid rgb(22, 100, 244);
+    box-shadow: inset 5px 0 25px -5px rgba(22, 100, 244, 1);
+    padding-left: 25px;
+}
+
+/* Icon and Text Styling within the Link */
+.material-symbols-outlined,
+.nav-link p {
+    color: inherit;
+    margin: 0; /* Manual reset for p tag */
+}
+
+/* --- Main Content Area Styling --- */
+.main-content {
+    flex-grow: 1; 
+    padding: 30px; 
+    background-color: #1A1A2E; 
+    display: grid; 
+    grid-template-columns: 2fr 1fr; 
+    gap: 30px; 
+    align-items: start; 
+    max-width: none;
+    margin: 0;
+}
+
+/* Style for the Left Column of the Main Content Grid */
+.main-content-left {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+/* Style for the Right Column of the Main Content Grid */
+.main-content-right {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; 
+}
+
+/* Common Card/Section Styling within the Grid */
+.grid-card {
+    background-color: #2C3E50; 
+    border-radius: 12px; 
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+    border: 1px solid rgba(118, 163, 247, 0.2); 
+}
+
+/* Specific styling for the Welcome Card (top left) */
+.welcome-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.welcome-card h1 {
+    font-size: 28px;
+    color: rgb(118, 163, 247); 
+    text-shadow: 0 0 10px rgba(118, 163, 247, 0.5); 
+    margin: 0; /* Manual reset */
+}
+
+.welcome-card p {
+    font-size: 16px;
+    color: #E0F7FA;
+    margin: 0; /* Manual reset */
+}
+
+/* Styles for the "Jot down a quick thought..." input */
+.quick-thought-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quick-thought-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgb(118, 163, 247);
+    border-radius: 8px;
+    background-color: #1A1A2E; 
+    color: #E0F7FA;
+    font-size: 16px;
+    resize: vertical; 
+    min-height: 80px;
+}
+
+.quick-thought-input::placeholder {
+    color: rgba(224, 247, 250, 0.6);
+}
+
+.quick-thought-actions {
+    display: flex;
+    justify-content: flex-end; 
+    gap: 10px;
+}
+
+.quick-thought-btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.quick-thought-btn.save {
+    background-color: rgb(22, 100, 244); 
+    color: white;
+    box-shadow: 0 0 8px rgba(22, 100, 244, 0.5);
+}
+
+.quick-thought-btn.save:hover {
+    background-color: white;
+    color: rgb(22, 100, 244);
+    box-shadow: 0 0 15px rgba(22, 100, 244, 0.8);
+}
+
+.quick-thought-btn.cancel {
+    background-color: #2C3E50; 
+    color: #E0F7FA;
+    border: 1px solid #2C3E50;
+}
+
+.quick-thought-btn.cancel:hover {
+    background-color: #3C5060;
+    color: white;
+}
+
+/* Recent Notes section/Card styling */
+.recent-notes-section h2,
+.tag-cloud-section h2,
+.discover-connections-section h2,
+.your-space-card h2 {
+    font-size: 22px;
+    color: rgb(22, 100, 244); 
+    margin: 0 0 20px 0; /* Manual margin reset and set */
+    text-shadow: 0 0 8px rgba(22, 100, 244, 0.5); 
+}
+
+/* Individual Note Item Styling */
+.note-item {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(224, 247, 250, 0.1); 
+    color: #E0F7FA;
+}
+
+.note-item:last-child {
+    border-bottom: none;
+}
+
+.note-item h3 {
+    font-size: 18px;
+    color: rgb(118, 163, 247);
+    margin: 0 0 5px 0; /* Manual margin reset and set */
+}
+
+.note-item p {
+    font-size: 14px;
+    color: rgba(224, 247, 250, 0.8);
+    margin: 0; /* Manual reset */
+}
+
+.note-item span {
+    font-size: 12px;
+    color: rgba(224, 247, 250, 0.5);
+}
+
+/* Tag Styling within Note Items */
+.note-tags-wrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.note-tag {
+    background-color: rgba(22, 100, 244, 0.2);
+    color: rgb(118, 163, 247);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    border: 1px solid rgba(118, 163, 247, 0.3);
+}
+
+/* Tag Cloud Styling */
+.tag-cloud-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-cloud-tag {
+    background-color: rgba(118, 163, 247, 0.15); 
+    color: rgb(118, 163, 247);
+    padding: 8px 15px;
+    border-radius: 20px; 
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(118, 163, 247, 0.4);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.tag-cloud-tag:hover {
+    background-color: rgba(118, 163, 247, 0.3);
+    box-shadow: 0 0 10px rgba(118, 163, 247, 0.7);
+}
+
+/* Discover Connections Styling */
+.discover-connections-section p {
+    font-size: 15px;
+    color: #E0F7FA;
+    margin: 0 0 10px 0; /* Manual margin reset and set */
+}
+
+.discover-connections-section a {
+    color: rgb(118, 163, 247); 
+    text-decoration: none;
+    transition: text-shadow 0.2s ease;
+}
+
+.discover-connections-section a:hover {
+    text-shadow: 0 0 8px rgba(118, 163, 247, 0.5);
+}
+
+/* Your Space/Profile Styling */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2C3E50;
+    margin-bottom: 15px;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #008CBA; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    border: 2px solid rgb(118, 163, 247);
+    box-shadow: 0 0 10px rgba(118, 163, 247, 0.5);
+}
+
+.user-info p {
+    margin: 0; /* Manual reset */
+    color: #E0F7FA;
+}
+
+.user-info p.user-name {
+    font-weight: bold;
+    color: white;
+}
+
+.user-info p.user-email {
+    font-size: 14px;
+    color: rgba(224, 247, 250, 0.7);
+}
+
+.your-space-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.your-space-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #E0F7FA;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 0;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.your-space-link .material-symbols-outlined {
+    font-size: 20px;
+    color: rgb(118, 163, 247); 
+}
+
+.your-space-link:hover {
+    color: rgb(118, 163, 247);
+    text-shadow: 0 0 8px rgba(118, 163, 247, 0.5);
+}

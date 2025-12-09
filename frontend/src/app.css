@@ -1,0 +1,6 @@
+html, body, #root, .app-main-container {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #1A1A2E; /* Ensures dark base background */
+}
