@@ -8,12 +8,12 @@ html, body {
 }
 
 /* Base Body Styling */
-body {
+/*body {
     display: flex; /* Enable Flexbox */
-    background-color: #4242a5;
+    /*background-color: #4242a5;
     
     /* Centering: Horizontal & Vertical */
-    justify-content: center;
+    /*justify-content: center;
     align-items: center; 
     height: 100vh; /* Set height to viewport height for centering to work */
 
@@ -21,7 +21,7 @@ body {
     /* --- BACKGROUND IMAGE PROPERTIES START HERE --- */
 
     /* 1. Specify the image path */
-    /*background-image: url('background.jpeg'); 
+    /*background-image: url('background.jpg'); 
     /* NOTE: Replace 'your-image-name.jpg' with the actual file path/name of your image. */
 
     /* 2. Prevent the image from tiling (repeating) */
@@ -34,29 +34,61 @@ body {
     /*background-attachment: fixed; 
 
     /* 5. Center the image on the screen */
-    /*background-position: center center; */
+    /*background-position: center center; 
 }
 
 /* Container for the entire login box - Neon Card Style */
 .login-container {
-    background: rgba(255, 255, 255, 0.2); 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background.jpg'); 
+    /* NOTE: Replace 'your-image-name.jpg' with the actual file path/name of your image. */
+
+    /* 2. Prevent the image from tiling (repeating) */
+    background-repeat: no-repeat; 
+
+    /* 3. Scale the image to cover the entire viewport */
+    background-size: cover; 
+
+    /* 4. Keep the image fixed, so it doesn't scroll with content (optional, but looks great) */
+    background-attachment: fixed; 
+
+    /* 5. Center the image on the screen */
+    background-position: center center; 
+}
+    /*background: rgba(255, 255, 255, 0.2); 
     /* The last value (0.2) controls the transparency/fogginess */
 
     /* 2. Apply the backdrop-filter (blur) */
-    backdrop-filter: blur(10px);
+    /*backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px); /* For Safari support */
     
-    padding: 30px;
+    /*padding: 30px;
     border-radius: 8px;
     
     /* Give it a subtle, transparent border for definition */
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    /*border: 1px solid rgba(0, 0, 0, 0.3);
     
     /* Subtle shadow */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     
     width: 400px;
     height: auto;
+}*/
+
+.login-form {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 100px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgb(60, 104, 225);
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    color: white;
 }
 
 /* Form header */
