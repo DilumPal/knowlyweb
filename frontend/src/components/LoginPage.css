@@ -1,166 +1,339 @@
-/* --- Centering Fix (Replaces Universal Reset for this page) --- */
-/* Ensure the body and html have no margin and full height for centering */
+/* --- Global Reset & Centering --- */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%; 
-    box-sizing: border-box; /* Ensures padding/border don't affect body size */
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; 
 }
 
-/* Base Body Styling */
-/*body {
-    display: flex; /* Enable Flexbox */
-    /*background-color: #4242a5;
-    
-    /* Centering: Horizontal & Vertical */
-    /*justify-content: center;
-    align-items: center; 
-    height: 100vh; /* Set height to viewport height for centering to work */
-
-    /* The rest of the page styling remains the same */
-    /* --- BACKGROUND IMAGE PROPERTIES START HERE --- */
-
-    /* 1. Specify the image path */
-    /*background-image: url('background.jpg'); 
-    /* NOTE: Replace 'your-image-name.jpg' with the actual file path/name of your image. */
-
-    /* 2. Prevent the image from tiling (repeating) */
-    /*background-repeat: no-repeat; 
-
-    /* 3. Scale the image to cover the entire viewport */
-    /*background-size: cover; 
-
-    /* 4. Keep the image fixed, so it doesn't scroll with content (optional, but looks great) */
-    /*background-attachment: fixed; 
-
-    /* 5. Center the image on the screen */
-    /*background-position: center center; 
-}
-
-/* Container for the entire login box - Neon Card Style */
+/* --- Main Container --- */
 .login-container {
     min-height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    
     background-image: url('background.png'); 
-    /* NOTE: Replace 'your-image-name.jpg' with the actual file path/name of your image. */
-
-    /* 2. Prevent the image from tiling (repeating) */
     background-repeat: no-repeat; 
-
-    /* 3. Scale the image to cover the entire viewport */
     background-size: cover; 
-
-    /* 4. Keep the image fixed, so it doesn't scroll with content (optional, but looks great) */
     background-attachment: fixed; 
-
-    /* 5. Center the image on the screen */
     background-position: center center; 
 }
-    /*background: rgba(255, 255, 255, 0.2); 
-    /* The last value (0.2) controls the transparency/fogginess */
 
-    /* 2. Apply the backdrop-filter (blur) */
-    /*backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); /* For Safari support */
-    
-    /*padding: 30px;
-    border-radius: 8px;
-    
-    /* Give it a subtle, transparent border for definition */
-    /*border: 1px solid rgba(0, 0, 0, 0.3);
-    
-    /* Subtle shadow */
-    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    
-    width: 400px;
-    height: auto;
-}*/
-
+/* --- Login Card (Glassmorphism + Animations) --- */
 .login-form {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 100px;
+    background: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    padding: 40px 30px; 
     border-radius: 15px;
-    /*box-shadow: 0 0 15px rgb(60, 104, 225);*/
+    border: 1px solid rgba(118, 163, 247, 0.3); /* Light Blue Border */
+    
+    width: 90%;
+    max-width: 380px;
     height: auto;
-    width: 100%;
-    max-width: 400px;
+    
+    display: flex;
+    flex-direction: column;
     color: white;
+    
+    position: relative;
+    z-index: 10;
+    
+    /* Animations: Slide Up Entrance + Endless Breathing Glow */
+    animation: 
+        fadeInUp 1s ease-out forwards,
+        breathingGlow 6s ease-in-out infinite; 
+    animation-delay: 0s, 1s; 
 }
 
-/* Form header */
+/* --- ANIMATION 1: Blue Breathing Glow --- */
+@keyframes breathingGlow {
+    0% {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border-color: rgba(118, 163, 247, 0.3);
+    }
+    50% {
+        /* Soft Cyan/Blue Glow */
+        box-shadow: 0 0 25px rgba(22, 100, 244, 0.5); 
+        border-color: rgba(118, 163, 247, 0.6);
+    }
+    100% {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border-color: rgba(118, 163, 247, 0.3);
+    }
+}
+
+/* --- ANIMATION 2: Slide Up Entrance --- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- ANIMATION 3: Floating Blue Shapes --- */
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 1;
+    opacity: 0.7;
+    /* Removed colorShift to prevent non-blue colors */
+    animation: float 12s infinite alternate ease-in-out;
+}
+
+/* Shape 1: Deep Royal Blue */
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #0061ff, #004e92); /* Bright Blue to Dark Blue */
+    top: -60px;
+    left: -60px;
+}
+
+/* Shape 2: Cyan / Electric Blue */
+.shape-2 {
+    width: 260px;
+    height: 260px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Cyan to Blue */
+    bottom: -60px;
+    right: -60px;
+    animation-delay: -5s;
+}
+
+/* Shape 3: Midnight / Ice Blue */
+.shape-3 {
+    width: 180px;
+    height: 180px;
+    background: linear-gradient(135deg, #1cb5e0, #000046); /* Ice to Deep Navy */
+    top: 40%;
+    left: 15%;
+    animation: float-reverse 15s infinite alternate ease-in-out;
+    opacity: 0.6;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(30px, 50px) rotate(15deg); }
+}
+
+@keyframes float-reverse {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-30px, -40px); }
+}
+
+/* --- Header Styling --- */
 .login-form h2 {
     text-align: center;
-    /* Manual reset of default browser margin/padding for h2 */
-    margin-top: 0 !important;
-    margin-bottom: 30px;
-    
-    font-size: 32px;
-    /* Use the light accent blue for the title */
-    color: rgb(4, 24, 61);
-    text-shadow: 0 0 15px rgb(255, 255, 255); /* Neon glow */
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #E0F7FA; /* Ice Blue Text */
+    text-shadow: 0 0 10px rgba(0, 198, 255, 0.5); /* Cyan Glow */
 }
 
-/* Grouping for labels and inputs */
+/* --- Input Styling --- */
 .input-group {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    width: 100%;
 }
 
-/* Styling for labels */
 .input-group label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
-    font-size: 16px;
-    color: #E0F7FA;
+    font-size: 14px;
+    color: #B3E5FC; /* Very Light Blue */
 }
 
-/* Styling for input fields */
 .input-group input {
     width: 100%;
-    padding: 12px;
-    /* Darker input background and light accent border */
-    background-color: #1A1A2E;
-    border: 1px solid rgb(118, 163, 247);
+    padding: 12px 15px;
+    /* Dark Navy Background */
+    background-color: rgba(10, 25, 47, 0.7); 
+    border: 1px solid rgba(22, 100, 244, 0.5);
     border-radius: 8px;
-    color: #E0F7FA;
-    font-size: 16px;
+    color: white;
+    font-size: 15px;
     transition: all 0.3s ease;
+    box-sizing: border-box; 
 }
 
-/* Input focus state with strong glow */
+/* Pulse Animation for Inputs */
+@keyframes inputPulse {
+    0% { box-shadow: 0 0 5px rgba(22, 100, 244, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(0, 198, 255, 0.6); } /* Cyan Pulse */
+    100% { box-shadow: 0 0 5px rgba(22, 100, 244, 0.3); }
+}
+
 .input-group input:focus {
     outline: none;
-    /* Strong light blue neon focus glow */
-    box-shadow: 0 0 20px rgb(118, 163, 247);
-    border-color: transparent;
-    background-color: #1A1A2E;
+    border-color: #00c6ff;
+    background-color: rgba(10, 25, 47, 0.9);
+    animation: inputPulse 2s infinite; 
 }
 
-/* Styling for the login button - Deep Blue Accent */
+/* --- Button Styling --- */
 .login-form button[type="submit"] {
     width: 100%;
     padding: 12px;
-    /* Deep Blue accent from homepage */
-    background-color: rgb(22, 100, 244); 
+    margin-top: 10px;
+    /* Gradient Blue Button */
+    background: linear-gradient(135deg, #0061ff, #00c6ff); 
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
-    transition: all 0.2s ease;
-    /* Initial subtle deep blue glow */
-    box-shadow: 0 0 10px rgba(22, 100, 244, 0.5);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 97, 255, 0.4);
 }
 
-/* Button hover effect */
 .login-form button[type="submit"]:hover {
-    background-color: white;
-    color: rgb(22, 100, 244);
-    /* Stronger deep blue glow on hover */
-    box-shadow: 0 0 25px rgba(22, 100, 244, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
+    filter: brightness(1.1);
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 768px) {
+    .shape {
+        filter: blur(60px); 
+        opacity: 0.5;
+    }
+}
+
+/* ... (Keep your existing styles for body, container, form, etc.) ... */
+
+/* --- FIREFLY ANIMATION (Converted to Standard CSS) --- */
+
+.firefly {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    pointer-events: none; /* Allows clicking through them */
+    z-index: 5; /* Behind the form (z-index 10) but above background */
+}
+
+.firefly::before,
+.firefly::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    transform-origin: -10vw;
+}
+
+.firefly::before {
+    background: rgb(255, 255, 255);
+    opacity: 0.2;
+    animation: drift ease alternate infinite;
+}
+
+.firefly::after {
+    background: white;
+    opacity: 0;
+    /* CHANGED: Yellow -> Cyan/Blue Glow */
+    box-shadow: 0 0 10px 2px rgb(141, 195, 221); 
+    animation: drift ease alternate infinite, flash ease infinite;
+}
+
+/* --- Keyframes for basic glow/drift --- */
+@keyframes drift {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes flash {
+    0%, 30%, 100% {
+        opacity: 0;
+        box-shadow: 0 0 0vw 0vw rgb(68, 204, 241);
+    }
+    5% {
+        opacity: 1;
+        box-shadow: 0 0 10px 2px rgb(93, 207, 239);
+    }
+}
+
+/* --- Pre-calculated Random Movements for 15 Fireflies --- */
+/* Since we can't use random() in CSS, we manually define varied paths */
+
+.firefly:nth-child(1) { animation: move1 18s alternate infinite; }
+.firefly:nth-child(1)::after { animation-duration: 18s, 8000ms; animation-delay: 0ms, 1000ms; }
+
+.firefly:nth-child(2) { animation: move2 22s alternate infinite; }
+.firefly:nth-child(2)::after { animation-duration: 22s, 9000ms; animation-delay: 0ms, 500ms; }
+
+.firefly:nth-child(3) { animation: move3 26s alternate infinite; }
+.firefly:nth-child(3)::after { animation-duration: 26s, 6500ms; animation-delay: 0ms, 1500ms; }
+
+.firefly:nth-child(4) { animation: move4 15s alternate infinite; }
+.firefly:nth-child(4)::after { animation-duration: 15s, 7000ms; animation-delay: 0ms, 2000ms; }
+
+.firefly:nth-child(5) { animation: move5 20s alternate infinite; }
+.firefly:nth-child(5)::after { animation-duration: 20s, 7500ms; animation-delay: 0ms, 500ms; }
+
+/* Reuse animations for 6-15 to save file size, but vary delays */
+.firefly:nth-child(6) { animation: move1 19s alternate infinite; animation-delay: -5s; }
+.firefly:nth-child(7) { animation: move2 24s alternate infinite; animation-delay: -2s; }
+.firefly:nth-child(8) { animation: move3 21s alternate infinite; animation-delay: -8s; }
+.firefly:nth-child(9) { animation: move4 17s alternate infinite; animation-delay: -1s; }
+.firefly:nth-child(10) { animation: move5 23s alternate infinite; animation-delay: -10s; }
+.firefly:nth-child(11) { animation: move1 25s alternate infinite; animation-delay: -3s; }
+.firefly:nth-child(12) { animation: move2 16s alternate infinite; animation-delay: -7s; }
+.firefly:nth-child(13) { animation: move3 28s alternate infinite; animation-delay: -4s; }
+.firefly:nth-child(14) { animation: move4 14s alternate infinite; animation-delay: -9s; }
+.firefly:nth-child(15) { animation: move5 29s alternate infinite; animation-delay: -6s; }
+
+/* --- Movement Patterns --- */
+
+@keyframes move1 {
+    0% { transform: translateX(0) translateY(0) scale(1); }
+    25% { transform: translateX(30vw) translateY(-40vh) scale(0.5); }
+    50% { transform: translateX(-20vw) translateY(30vh) scale(0.8); }
+    75% { transform: translateX(10vw) translateY(-20vh) scale(1.2); }
+    100% { transform: translateX(-30vw) translateY(40vh) scale(0.6); }
+}
+
+@keyframes move2 {
+    0% { transform: translateX(0) translateY(0) scale(0.8); }
+    33% { transform: translateX(-40vw) translateY(20vh) scale(1.2); }
+    66% { transform: translateX(30vw) translateY(-30vh) scale(0.6); }
+    100% { transform: translateX(-10vw) translateY(10vh) scale(1); }
+}
+
+@keyframes move3 {
+    0% { transform: translateX(10vw) translateY(-10vh) scale(1); }
+    25% { transform: translateX(-30vw) translateY(40vh) scale(0.5); }
+    50% { transform: translateX(20vw) translateY(-20vh) scale(1.1); }
+    75% { transform: translateX(-10vw) translateY(20vh) scale(0.7); }
+    100% { transform: translateX(40vw) translateY(-40vh) scale(0.9); }
+}
+
+@keyframes move4 {
+    0% { transform: translateX(-20vw) translateY(30vh) scale(0.6); }
+    50% { transform: translateX(40vw) translateY(-40vh) scale(1); }
+    100% { transform: translateX(-10vw) translateY(10vh) scale(0.5); }
+}
+
+@keyframes move5 {
+    0% { transform: translateX(30vw) translateY(-20vh) scale(1); }
+    30% { transform: translateX(-20vw) translateY(40vh) scale(0.7); }
+    60% { transform: translateX(10vw) translateY(-30vh) scale(1.2); }
+    100% { transform: translateX(-30vw) translateY(10vh) scale(0.8); }
 }

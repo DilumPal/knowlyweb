@@ -1,17 +1,13 @@
 import React, { useState } from 'react';
 import './LoginPage.css';
 
-// Component now accepts the onNavigate prop from App.jsx
 const LoginPage = ({ onNavigate }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = (e) => {
         e.preventDefault(); 
-        
-        // Placeholder credentials for successful login: test/123
         if (username === 'test' && password === '123') {
-            // CALL onNavigate to move to the 'start' view
             onNavigate('start');
         } else {
             alert('Invalid credentials. Please use test/123.');
@@ -20,6 +16,14 @@ const LoginPage = ({ onNavigate }) => {
 
     return (
         <div className="login-container">
+            {/* --- FIREFLIES CONTAINER --- */}
+            <div className="firefly-container">
+                {/* Generates 15 fireflies automatically */}
+                {[...Array(15)].map((_, i) => (
+                    <div key={i} className="firefly"></div>
+                ))}
+            </div>
+
             <form className="login-form" onSubmit={handleLogin}>
                 <h2>Knowly Login</h2>
                 
