@@ -1,46 +1,42 @@
 import React from 'react';
 import './StartPage.css'; 
 
-// Component now accepts the onNavigate prop
 const StartPage = ({ onNavigate }) => {
 
-    // Functions call the navigation prop directly
     const handleGoHomeClick = () => onNavigate('home');
-    const handleLogoutClick = () => onNavigate('login'); // Logout returns to Login
+    const handleLogoutClick = () => onNavigate('login');
 
     return (
         <div className="start-page-container">
-            <header className='start-page-header'>
-                <h1>Welcome to Knowly, Kevin!</h1>
-                <p>This is the initial landing page after logging in.</p>
-            </header>
-            
-            <main className='start-page-content'>
-                <p>You can use this page for quick settings, a summary, or a quick launchpad.</p>
+            {/* Title Section */}
+            <div className="title-section">
+                <h1 className="knowly-title">KNOWLY</h1>
+                <p className="knowly-subtitle">More studying. Less scrolling. Organize your notes the smarter way!</p>
+            </div>
 
-                {/* --- 3D Rotating Cube Section --- */}
-                <div className="cube-scene">
-                    <div className="box-card">
-                        <div className="face front">Front</div>
-                        <div className="face back">Back</div>
-                        <div className="face right">Right</div>
-                        <div className="face left">Left</div>
-                        <div className="face top">Top</div>
-                        <div className="face bottom">Bottom</div>
-                    </div>
+            {/* --- 3D Rotating Cube Section (Unchanged) --- */}
+            <div className="cube-scene">
+                <div className="box-card">
+                    <div className="face front">KNOWLY</div>
+                    <div className="face back">KNOWLY</div>
+                    <div className="face right">KNOWLY</div>
+                    <div className="face left">KNOWLY</div>
+                    <div className="face top">KNOWLY</div>
+                    <div className="face bottom">KNOWLY</div>
                 </div>
-                {/* -------------------------------- */}
+            </div>
+            {/* ------------------------------------------- */}
 
-                <div className='start-page-actions'>
-                    <button className='action-btn primary-btn' onClick={handleGoHomeClick}>
-                        Go to Dashboard (Homepage)
-                    </button>
-                    {/* The logout button now uses the proper navigation call */}
-                    <button className='action-btn secondary-btn' onClick={handleLogoutClick}>
-                        Logout and Return to Login
-                    </button>
-                </div>
-            </main>
+            {/* Actions Section */}
+            <div className='start-page-actions'>
+                <button className='action-btn primary-btn' onClick={handleGoHomeClick}>
+                    Go to Dashboard
+                </button>
+                
+                <button className='action-btn small-btn' onClick={handleLogoutClick}>
+                    Log Out
+                </button>
+            </div>
         </div>
     );
 };

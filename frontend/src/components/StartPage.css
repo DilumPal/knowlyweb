@@ -1,4 +1,4 @@
-/* --- Page-Specific Reset (Replaces Universal Reset) --- */
+/* --- Page-Specific Reset --- */
 html, body {
     margin: 0;
     padding: 0;
@@ -10,108 +10,98 @@ html, body {
 .start-page-container {
     min-height: 100vh;
     width: 100%;
-    background-color: #1A1A2E;
+    /* Dark background similar to Login Page's input/theme */
+    background-color: #1A1A2E; 
+    background: radial-gradient(circle at center, #1A1A2E 0%, #0a192f 100%);
     color: #E0F7FA;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
-/* Header/Top Nav Styling */
-.start-page-header {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px 30px;
-    background-color: rgb(22, 100, 244);
-    box-shadow: 0 0 15px rgba(22, 100, 244, 1);
+/* --- Title Section --- */
+.title-section {
+    margin-bottom: 40px; /* Space between title and cube */
+    z-index: 10;
 }
 
-.start-page-header h1 {
-    color: white;
-    font-size: 32px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+.knowly-title {
+    font-size: 64px; /* Large and bold */
+    font-weight: 800;
     margin: 0;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(0, 198, 255, 0.3);
 }
 
-.start-page-header p {
-    margin: 0;
+.knowly-subtitle {
+    font-size: 16px;
+    color: #B3E5FC;
+    margin-top: 10px;
+    font-weight: 400;
+    opacity: 0.8;
 }
 
-/* Main Content Area */
-.start-page-content {
-    flex-grow: 1;
+/* --- Action Buttons --- */
+.start-page-actions {
+    margin-top: 50px; /* Space between cube and buttons */
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    padding: 50px 20px;
-    max-width: 800px;
-}
-
-.start-page-content h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
-    color: rgb(118, 163, 247);
-    text-shadow: 0 0 20px rgba(118, 163, 247, 0.7);
-    margin-top: 0;
-}
-
-.start-page-content p {
-    font-size: 18px;
-    color: rgba(224, 247, 250, 0.8);
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-/* Action Buttons Container */
-.start-page-actions {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 40px;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .action-btn {
-    padding: 15px 30px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+/* Primary Button (Matches Login Page) */
+.primary-btn {
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #0061ff, #00c6ff);
+    color: white;
     font-size: 18px;
     font-weight: 600;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 97, 255, 0.4);
 }
 
-.action-btn.primary-btn { 
-    background-color: rgb(22, 100, 244); 
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
+    filter: brightness(1.1);
+}
+
+/* Secondary Button (Small & Subtle) */
+.small-btn {
+    padding: 8px 15px;
+    background: transparent;
+    color: #B3E5FC;
+    font-size: 14px;
+    font-weight: 500;
+    border: 1px solid rgba(118, 163, 247, 0.3);
+    width: auto; /* Not full width */
+}
+
+.small-btn:hover {
+    background: rgba(118, 163, 247, 0.1);
     color: white;
-    box-shadow: 0 0 10px rgba(22, 100, 244, 0.6);
-}
-
-.action-btn.primary-btn:hover {
-    background-color: white;
-    color: rgb(22, 100, 244);
-    box-shadow: 0 0 25px rgba(22, 100, 244, 1);
-}
-
-.action-btn.secondary-btn { 
-    background-color: rgb(118, 163, 247); 
-    color: #1A1A2E; 
-    box-shadow: 0 0 10px rgba(118, 163, 247, 0.6);
-}
-
-.action-btn.secondary-btn:hover {
-    background-color: white;
-    color: #1A1A2E;
-    box-shadow: 0 0 25px rgba(118, 163, 247, 1);
+    border-color: rgba(118, 163, 247, 0.6);
 }
 
 /* ------------------------------------------------ */
-/* --- 3D Cube Integration (Non-Stop & Faster) --- */
+/* --- 3D Cube Integration (Unchanged) --- */
 /* ------------------------------------------------ */
 
 .cube-scene {
@@ -129,13 +119,11 @@ html, body {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    cursor: default; /* Changed from pointer since it's just visual now */
+    cursor: default;
     
-    /* FASTER SPEED: Changed from 12s to 6s */
+    /* FASTER SPEED: 6s */
     animation: rotate3d 6s infinite linear;
 }
-
-/* NOTE: The hover pause rule has been removed here to ensure continuous rotation */
 
 .face {
     position: absolute;
@@ -163,7 +151,6 @@ html, body {
     background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
     top: -100%;
     left: -100%;
-    /* Subtle shine animation independent of rotation */
     animation: shine 3s infinite linear; 
 }
 
@@ -203,4 +190,6 @@ html, body {
     .left { transform: translateX(-75px) rotateY(-90deg); }
     .top { transform: translateY(-75px) rotateX(90deg); }
     .bottom { transform: translateY(75px) rotateX(-90deg); }
+    
+    .knowly-title { font-size: 48px; }
 }
