@@ -4,14 +4,14 @@ html, body {
     padding: 0;
     height: 100%;
     box-sizing: border-box;
-    overflow: hidden; /* Prevents scrollbars from the moving balls */
+    overflow: hidden; 
 }
 
 /* Base Container Styling */
 .start-page-container {
     min-height: 100vh;
     width: 100%;
-    position: relative; /* Essential for layering */
+    position: relative; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
@@ -19,7 +19,6 @@ html, body {
 }
 
 /* --- Content Wrapper --- */
-/* This ensures your text and buttons stay on TOP of the moving background */
 .content-wrapper {
     position: relative;
     z-index: 10;
@@ -28,6 +27,44 @@ html, body {
     align-items: center;
     text-align: center;
     padding: 20px;
+}
+
+/* --- NEW: Top Navigation Bar (Private State) --- */
+.start-top-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between; /* Pushes buttons to edges */
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 20; /* Ensure it's above everything */
+}
+
+/* Top Nav Button Styling */
+.nav-top-btn {
+    background: transparent;
+    border: 1px solid rgba(118, 163, 247, 0.4);
+    color: #B3E5FC;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(5px); /* Glass effect */
+}
+
+.nav-top-btn:hover {
+    background: rgba(118, 163, 247, 0.2);
+    color: white;
+    border-color: #00c6ff;
+    box-shadow: 0 0 10px rgba(0, 198, 255, 0.4);
 }
 
 /* --- Title Section --- */
@@ -193,9 +230,7 @@ html, body {
     .knowly-title { font-size: 48px; }
 }
 
-/* ------------------------------------------------ */
-/* --- BACKGROUND ANIMATION (New) --- */
-/* ------------------------------------------------ */
+/* --- BACKGROUND ANIMATION --- */
 
 @keyframes move {
   100% {
@@ -209,10 +244,9 @@ html, body {
   height: 100vh;
   top: 0;
   left: 0;
-  /* UPDATED: Changed from Teal (#4CB8B6) to Knowly Dark Blue */
   background: #1A1A2E; 
   overflow: hidden;
-  z-index: 0; /* Ensures it stays behind content */
+  z-index: 0; 
 }
 
 .ball {
@@ -225,12 +259,10 @@ html, body {
 }
 
 .ball:nth-child(odd) {
-    /* UPDATED: Changed from Green (#006D5B) to Deep Blue */
     color: #004e92;
 }
 
 .ball:nth-child(even) {
-    /* UPDATED: Changed from Orange (#FF6F61) to Cyan */
     color: #00c6ff;
     opacity: 0.7;
 }
