@@ -4,20 +4,27 @@ html, body {
     padding: 0;
     height: 100%;
     box-sizing: border-box;
+    overflow: hidden; /* Prevents scrollbars from the moving balls */
 }
 
 /* Base Container Styling */
 .start-page-container {
     min-height: 100vh;
     width: 100%;
-    /* Dark background similar to Login Page's input/theme */
-    background-color: #1A1A2E; 
-    background: radial-gradient(circle at center, #1A1A2E 0%, #0a192f 100%);
-    color: #E0F7FA;
+    position: relative; /* Essential for layering */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
+
+/* --- Content Wrapper --- */
+/* This ensures your text and buttons stay on TOP of the moving background */
+.content-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px;
@@ -25,12 +32,12 @@ html, body {
 
 /* --- Title Section --- */
 .title-section {
-    margin-bottom: 40px; /* Space between title and cube */
+    margin-bottom: 40px;
     z-index: 10;
 }
 
 .knowly-title {
-    font-size: 64px; /* Large and bold */
+    font-size: 64px;
     font-weight: 800;
     margin: 0;
     letter-spacing: 4px;
@@ -50,7 +57,7 @@ html, body {
 
 /* --- Action Buttons --- */
 .start-page-actions {
-    margin-top: 50px; /* Space between cube and buttons */
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,7 +74,7 @@ html, body {
     width: 100%;
 }
 
-/* Primary Button (Matches Login Page) */
+/* Primary Button */
 .primary-btn {
     padding: 14px 20px;
     background: linear-gradient(135deg, #0061ff, #00c6ff);
@@ -83,7 +90,7 @@ html, body {
     filter: brightness(1.1);
 }
 
-/* Secondary Button (Small & Subtle) */
+/* Secondary Button */
 .small-btn {
     padding: 8px 15px;
     background: transparent;
@@ -91,7 +98,7 @@ html, body {
     font-size: 14px;
     font-weight: 500;
     border: 1px solid rgba(118, 163, 247, 0.3);
-    width: auto; /* Not full width */
+    width: auto;
 }
 
 .small-btn:hover {
@@ -100,10 +107,7 @@ html, body {
     border-color: rgba(118, 163, 247, 0.6);
 }
 
-/* ------------------------------------------------ */
-/* --- 3D Cube Integration (Unchanged) --- */
-/* ------------------------------------------------ */
-
+/* --- 3D Cube Integration --- */
 .cube-scene {
     width: 200px;
     height: 200px;
@@ -120,8 +124,6 @@ html, body {
     position: relative;
     transform-style: preserve-3d;
     cursor: default;
-    
-    /* FASTER SPEED: 6s */
     animation: rotate3d 6s infinite linear;
 }
 
@@ -162,7 +164,6 @@ html, body {
     opacity: 0.5;
 }
 
-/* Face positioning */
 .front { transform: translateZ(100px); border-color: #646cff; }
 .back { transform: translateZ(-100px) rotateY(180deg); border-color: #00bcd4; }
 .right { transform: translateX(100px) rotateY(90deg); border-color: #4caf50; }
@@ -181,7 +182,6 @@ html, body {
     100% { left: 100%; top: 100%; }
 }
 
-/* Responsive Cube adjustments */
 @media (max-width: 768px) {
     .cube-scene { width: 150px; height: 150px; }
     .front { transform: translateZ(75px); }
@@ -190,6 +190,112 @@ html, body {
     .left { transform: translateX(-75px) rotateY(-90deg); }
     .top { transform: translateY(-75px) rotateX(90deg); }
     .bottom { transform: translateY(75px) rotateX(-90deg); }
-    
     .knowly-title { font-size: 48px; }
+}
+
+/* ------------------------------------------------ */
+/* --- BACKGROUND ANIMATION (New) --- */
+/* ------------------------------------------------ */
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+.background-animation {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  /* UPDATED: Changed from Teal (#4CB8B6) to Knowly Dark Blue */
+  background: #1A1A2E; 
+  overflow: hidden;
+  z-index: 0; /* Ensures it stays behind content */
+}
+
+.ball {
+  position: absolute;
+  width: 20vmin;
+  height: 20vmin;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  animation: move linear infinite;
+}
+
+.ball:nth-child(odd) {
+    /* UPDATED: Changed from Green (#006D5B) to Deep Blue */
+    color: #004e92;
+}
+
+.ball:nth-child(even) {
+    /* UPDATED: Changed from Orange (#FF6F61) to Cyan */
+    color: #00c6ff;
+    opacity: 0.7;
+}
+
+.ball:nth-child(1) {
+  top: 77%;
+  left: 88%;
+  animation-duration: 40s;
+  animation-delay: -3s;
+  transform-origin: 16vw -2vh;
+  box-shadow: 40vmin 0 5.703076368487546vmin currentColor;
+}
+.ball:nth-child(2) {
+  top: 42%;
+  left: 2%;
+  animation-duration: 53s;
+  animation-delay: -29s;
+  transform-origin: -19vw 21vh;
+  box-shadow: -40vmin 0 5.17594621519026vmin currentColor;
+}
+.ball:nth-child(3) {
+  top: 28%;
+  left: 18%;
+  animation-duration: 49s;
+  animation-delay: -8s;
+  transform-origin: -22vw 3vh;
+  box-shadow: 40vmin 0 5.248179047256236vmin currentColor;
+}
+.ball:nth-child(4) {
+  top: 50%;
+  left: 79%;
+  animation-duration: 26s;
+  animation-delay: -21s;
+  transform-origin: -17vw -6vh;
+  box-shadow: 40vmin 0 5.279749632220298vmin currentColor;
+}
+.ball:nth-child(5) {
+  top: 46%;
+  left: 15%;
+  animation-duration: 36s;
+  animation-delay: -40s;
+  transform-origin: 4vw 0vh;
+  box-shadow: -40vmin 0 5.964309466052033vmin currentColor;
+}
+.ball:nth-child(6) {
+  top: 77%;
+  left: 16%;
+  animation-duration: 31s;
+  animation-delay: -10s;
+  transform-origin: 18vw 4vh;
+  box-shadow: 40vmin 0 5.178483653434181vmin currentColor;
+}
+.ball:nth-child(7) {
+  top: 22%;
+  left: 17%;
+  animation-duration: 55s;
+  animation-delay: -6s;
+  transform-origin: 1vw -23vh;
+  box-shadow: -40vmin 0 5.703026794398318vmin currentColor;
+}
+.ball:nth-child(8) {
+  top: 41%;
+  left: 47%;
+  animation-duration: 43s;
+  animation-delay: -28s;
+  transform-origin: 25vw -3vh;
+  box-shadow: 40vmin 0 5.196265905749415vmin currentColor;
 }
