@@ -18,6 +18,19 @@ const StartPage = ({ onNavigate }) => {
             <main className='start-page-content'>
                 <p>You can use this page for quick settings, a summary, or a quick launchpad.</p>
 
+                {/* --- 3D Rotating Cube Section --- */}
+                <div className="cube-scene">
+                    <div className="box-card">
+                        <div className="face front">Front</div>
+                        <div className="face back">Back</div>
+                        <div className="face right">Right</div>
+                        <div className="face left">Left</div>
+                        <div className="face top">Top</div>
+                        <div className="face bottom">Bottom</div>
+                    </div>
+                </div>
+                {/* -------------------------------- */}
+
                 <div className='start-page-actions'>
                     <button className='action-btn primary-btn' onClick={handleGoHomeClick}>
                         Go to Dashboard (Homepage)
