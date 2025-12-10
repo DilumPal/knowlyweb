@@ -1,43 +1,56 @@
 import React, { useEffect, useRef } from 'react';
 import './AboutPage.css';
+import backgroundImg from './background.png'; // Import the local image
 
 const AboutPage = ({ onNavigate }) => {
   const featureRef = useRef(null);
 
-  // --- Scroll Effect Logic (Replaces the jQuery snippet) ---
   useEffect(() => {
-    const handleScroll = () => {
-      const feature = featureRef.current;
+    const feature = featureRef.current;
+    
+    // Logic to update styles based on scroll position
+    const updateStyles = () => {
       if (!feature) return;
 
       const fromTop = window.scrollY;
       const width = feature.offsetWidth;
       
-      // 1. Calculate new background size (Zoom Effect)
+      // 1. Zoom Logic (Matches snippet)
       // Initial CSS size is 250% (2.5). 
-      // Snippet logic: newSize = size - (fromTop / 3)
-      const initialScale = 2.5; 
+      // Formula: newSize = (width * 2.5) - (fromTop / 3)
+      const initialScale = 0.5; 
       const startSize = width * initialScale;
       
-      // Prevent it from shrinking smaller than the screen width
-      const newSize = Math.max(width, startSize - (fromTop / 3));
+      // Calculate new size but don't let it shrink smaller than the container width
+      let newSize = startSize - (fromTop / 3);
+      if (newSize < width) newSize = width;
 
-      // 2. Calculate Blur
-      const blurValue = fromTop / 100; // Adjust divisor to control blur speed
+      // 2. Blur Logic
+      // Snippet: blur = 0 + (fromTop / 100)
+      const blurValue = fromTop / 100;
 
-      // 3. Calculate Opacity (Darken the image as we scroll)
-      const opacityValue = Math.max(0.2, 1 - (fromTop / window.innerHeight));
+      // 3. Opacity Logic
+      // Snippet: 1 - ((fromTop / htmlHeight) * 1.3)
+      // We use window.innerHeight for smoother viewport-based fading
+      const opacityValue = Math.max(0, 1 - (fromTop / window.innerHeight) * 1.3);
 
-      // Apply styles
+      // Apply the styles directly to the DOM element
       feature.style.backgroundSize = `${newSize}px`;
       feature.style.filter = `blur(${blurValue}px)`;
       feature.style.opacity = opacityValue;
     };
 
-    window.addEventListener('scroll', handleScroll);
+    // Run once on mount to set initial state
+    updateStyles();
+
+    // Attach listener
+    window.addEventListener('scroll', updateStyles);
+    window.addEventListener('resize', updateStyles); // Also update on resize
     
-    // Cleanup event listener
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+        window.removeEventListener('scroll', updateStyles);
+        window.removeEventListener('resize', updateStyles);
+    };
   }, []);
 
   return (
@@ -51,8 +64,15 @@ const AboutPage = ({ onNavigate }) => {
         </button>
       </div>
 
-      {/* Background Feature Image */}
-      <div className="feature" ref={featureRef}></div>
+      {/* Background Feature Image 
+         - Uses the imported local image
+         - Ref is attached here for the animation logic
+      */}
+      <div 
+        className="feature" 
+        ref={featureRef} 
+        style={{ backgroundImage: `url(${backgroundImg})` }}
+      ></div>
 
       {/* Main Content */}
       <div className="about-content">
