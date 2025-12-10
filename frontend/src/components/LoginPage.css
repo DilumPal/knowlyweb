@@ -43,7 +43,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('background.jpg'); 
+    background-image: url('background.png'); 
     /* NOTE: Replace 'your-image-name.jpg' with the actual file path/name of your image. */
 
     /* 2. Prevent the image from tiling (repeating) */
@@ -84,7 +84,7 @@ html, body {
     -webkit-backdrop-filter: blur(10px);
     padding: 100px;
     border-radius: 15px;
-    box-shadow: 0 0 15px rgb(60, 104, 225);
+    /*box-shadow: 0 0 15px rgb(60, 104, 225);*/
     height: auto;
     width: 100%;
     max-width: 400px;
@@ -100,13 +100,13 @@ html, body {
     
     font-size: 32px;
     /* Use the light accent blue for the title */
-    color: rgb(118, 163, 247);
-    text-shadow: 0 0 15px rgba(118, 163, 247, 0.6); /* Neon glow */
+    color: rgb(4, 24, 61);
+    text-shadow: 0 0 15px rgb(255, 255, 255); /* Neon glow */
 }
 
 /* Grouping for labels and inputs */
 .input-group {
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
 /* Styling for labels */
