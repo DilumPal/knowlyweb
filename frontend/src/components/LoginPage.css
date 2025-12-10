@@ -32,7 +32,7 @@ html, body {
     
     padding: 40px 30px; 
     border-radius: 15px;
-    border: 1px solid rgba(118, 163, 247, 0.3); /* Light Blue Border */
+    border: 1px solid rgba(118, 163, 247, 0.3);
     
     width: 90%;
     max-width: 380px;
@@ -88,7 +88,6 @@ html, body {
     filter: blur(80px);
     z-index: 1;
     opacity: 0.7;
-    /* Removed colorShift to prevent non-blue colors */
     animation: float 12s infinite alternate ease-in-out;
 }
 
@@ -96,7 +95,7 @@ html, body {
 .shape-1 {
     width: 300px;
     height: 300px;
-    background: linear-gradient(135deg, #0061ff, #004e92); /* Bright Blue to Dark Blue */
+    background: linear-gradient(135deg, #0061ff, #004e92);
     top: -60px;
     left: -60px;
 }
@@ -105,7 +104,7 @@ html, body {
 .shape-2 {
     width: 260px;
     height: 260px;
-    background: linear-gradient(135deg, #00c6ff, #0072ff); /* Cyan to Blue */
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
     bottom: -60px;
     right: -60px;
     animation-delay: -5s;
@@ -115,7 +114,7 @@ html, body {
 .shape-3 {
     width: 180px;
     height: 180px;
-    background: linear-gradient(135deg, #1cb5e0, #000046); /* Ice to Deep Navy */
+    background: linear-gradient(135deg, #1cb5e0, #000046);
     top: 40%;
     left: 15%;
     animation: float-reverse 15s infinite alternate ease-in-out;
@@ -138,8 +137,8 @@ html, body {
     margin-top: 0;
     margin-bottom: 25px;
     font-size: 28px;
-    color: #E0F7FA; /* Ice Blue Text */
-    text-shadow: 0 0 10px rgba(0, 198, 255, 0.5); /* Cyan Glow */
+    color: #E0F7FA;
+    text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
 }
 
 /* --- Input Styling --- */
@@ -153,13 +152,12 @@ html, body {
     margin-bottom: 8px;
     font-weight: 500;
     font-size: 14px;
-    color: #B3E5FC; /* Very Light Blue */
+    color: #B3E5FC;
 }
 
 .input-group input {
     width: 100%;
     padding: 12px 15px;
-    /* Dark Navy Background */
     background-color: rgba(10, 25, 47, 0.7); 
     border: 1px solid rgba(22, 100, 244, 0.5);
     border-radius: 8px;
@@ -172,7 +170,7 @@ html, body {
 /* Pulse Animation for Inputs */
 @keyframes inputPulse {
     0% { box-shadow: 0 0 5px rgba(22, 100, 244, 0.3); }
-    50% { box-shadow: 0 0 15px rgba(0, 198, 255, 0.6); } /* Cyan Pulse */
+    50% { box-shadow: 0 0 15px rgba(0, 198, 255, 0.6); }
     100% { box-shadow: 0 0 5px rgba(22, 100, 244, 0.3); }
 }
 
@@ -188,7 +186,6 @@ html, body {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
-    /* Gradient Blue Button */
     background: linear-gradient(135deg, #0061ff, #00c6ff); 
     color: white;
     border: none;
@@ -212,128 +209,4 @@ html, body {
         filter: blur(60px); 
         opacity: 0.5;
     }
-}
-
-/* ... (Keep your existing styles for body, container, form, etc.) ... */
-
-/* --- FIREFLY ANIMATION (Converted to Standard CSS) --- */
-
-.firefly {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    width: 6px;
-    height: 6px;
-    margin: -3px 0 0 -3px;
-    pointer-events: none; /* Allows clicking through them */
-    z-index: 5; /* Behind the form (z-index 10) but above background */
-}
-
-.firefly::before,
-.firefly::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    transform-origin: -10vw;
-}
-
-.firefly::before {
-    background: rgb(255, 255, 255);
-    opacity: 0.2;
-    animation: drift ease alternate infinite;
-}
-
-.firefly::after {
-    background: white;
-    opacity: 0;
-    /* CHANGED: Yellow -> Cyan/Blue Glow */
-    box-shadow: 0 0 10px 2px rgb(141, 195, 221); 
-    animation: drift ease alternate infinite, flash ease infinite;
-}
-
-/* --- Keyframes for basic glow/drift --- */
-@keyframes drift {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-@keyframes flash {
-    0%, 30%, 100% {
-        opacity: 0;
-        box-shadow: 0 0 0vw 0vw rgb(68, 204, 241);
-    }
-    5% {
-        opacity: 1;
-        box-shadow: 0 0 10px 2px rgb(93, 207, 239);
-    }
-}
-
-/* --- Pre-calculated Random Movements for 15 Fireflies --- */
-/* Since we can't use random() in CSS, we manually define varied paths */
-
-.firefly:nth-child(1) { animation: move1 18s alternate infinite; }
-.firefly:nth-child(1)::after { animation-duration: 18s, 8000ms; animation-delay: 0ms, 1000ms; }
-
-.firefly:nth-child(2) { animation: move2 22s alternate infinite; }
-.firefly:nth-child(2)::after { animation-duration: 22s, 9000ms; animation-delay: 0ms, 500ms; }
-
-.firefly:nth-child(3) { animation: move3 26s alternate infinite; }
-.firefly:nth-child(3)::after { animation-duration: 26s, 6500ms; animation-delay: 0ms, 1500ms; }
-
-.firefly:nth-child(4) { animation: move4 15s alternate infinite; }
-.firefly:nth-child(4)::after { animation-duration: 15s, 7000ms; animation-delay: 0ms, 2000ms; }
-
-.firefly:nth-child(5) { animation: move5 20s alternate infinite; }
-.firefly:nth-child(5)::after { animation-duration: 20s, 7500ms; animation-delay: 0ms, 500ms; }
-
-/* Reuse animations for 6-15 to save file size, but vary delays */
-.firefly:nth-child(6) { animation: move1 19s alternate infinite; animation-delay: -5s; }
-.firefly:nth-child(7) { animation: move2 24s alternate infinite; animation-delay: -2s; }
-.firefly:nth-child(8) { animation: move3 21s alternate infinite; animation-delay: -8s; }
-.firefly:nth-child(9) { animation: move4 17s alternate infinite; animation-delay: -1s; }
-.firefly:nth-child(10) { animation: move5 23s alternate infinite; animation-delay: -10s; }
-.firefly:nth-child(11) { animation: move1 25s alternate infinite; animation-delay: -3s; }
-.firefly:nth-child(12) { animation: move2 16s alternate infinite; animation-delay: -7s; }
-.firefly:nth-child(13) { animation: move3 28s alternate infinite; animation-delay: -4s; }
-.firefly:nth-child(14) { animation: move4 14s alternate infinite; animation-delay: -9s; }
-.firefly:nth-child(15) { animation: move5 29s alternate infinite; animation-delay: -6s; }
-
-/* --- Movement Patterns --- */
-
-@keyframes move1 {
-    0% { transform: translateX(0) translateY(0) scale(1); }
-    25% { transform: translateX(30vw) translateY(-40vh) scale(0.5); }
-    50% { transform: translateX(-20vw) translateY(30vh) scale(0.8); }
-    75% { transform: translateX(10vw) translateY(-20vh) scale(1.2); }
-    100% { transform: translateX(-30vw) translateY(40vh) scale(0.6); }
-}
-
-@keyframes move2 {
-    0% { transform: translateX(0) translateY(0) scale(0.8); }
-    33% { transform: translateX(-40vw) translateY(20vh) scale(1.2); }
-    66% { transform: translateX(30vw) translateY(-30vh) scale(0.6); }
-    100% { transform: translateX(-10vw) translateY(10vh) scale(1); }
-}
-
-@keyframes move3 {
-    0% { transform: translateX(10vw) translateY(-10vh) scale(1); }
-    25% { transform: translateX(-30vw) translateY(40vh) scale(0.5); }
-    50% { transform: translateX(20vw) translateY(-20vh) scale(1.1); }
-    75% { transform: translateX(-10vw) translateY(20vh) scale(0.7); }
-    100% { transform: translateX(40vw) translateY(-40vh) scale(0.9); }
-}
-
-@keyframes move4 {
-    0% { transform: translateX(-20vw) translateY(30vh) scale(0.6); }
-    50% { transform: translateX(40vw) translateY(-40vh) scale(1); }
-    100% { transform: translateX(-10vw) translateY(10vh) scale(0.5); }
-}
-
-@keyframes move5 {
-    0% { transform: translateX(30vw) translateY(-20vh) scale(1); }
-    30% { transform: translateX(-20vw) translateY(40vh) scale(0.7); }
-    60% { transform: translateX(10vw) translateY(-30vh) scale(1.2); }
-    100% { transform: translateX(-30vw) translateY(10vh) scale(0.8); }
 }

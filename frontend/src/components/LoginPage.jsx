@@ -16,13 +16,10 @@ const LoginPage = ({ onNavigate }) => {
 
     return (
         <div className="login-container">
-            {/* --- FIREFLIES CONTAINER --- */}
-            <div className="firefly-container">
-                {/* Generates 15 fireflies automatically */}
-                {[...Array(15)].map((_, i) => (
-                    <div key={i} className="firefly"></div>
-                ))}
-            </div>
+            {/* Ambient Background Shapes (Blue Theme) */}
+            <div className="shape shape-1"></div>
+            <div className="shape shape-2"></div>
+            <div className="shape shape-3"></div>
 
             <form className="login-form" onSubmit={handleLogin}>
                 <h2>Knowly Login</h2>
