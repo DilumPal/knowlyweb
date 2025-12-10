@@ -1,51 +1,53 @@
 import React, { useEffect, useRef } from 'react';
 import './AboutPage.css';
-import backgroundImg from './background.png'; // Import the local image
+import backgroundImg from './background.png'; // Matches your local file name
 
 const AboutPage = ({ onNavigate }) => {
   const featureRef = useRef(null);
+  const scrollIndicatorRef = useRef(null); // Ref for the new sign
 
   useEffect(() => {
     const feature = featureRef.current;
+    const scrollIndicator = scrollIndicatorRef.current;
     
     // Logic to update styles based on scroll position
     const updateStyles = () => {
-      if (!feature) return;
-
       const fromTop = window.scrollY;
-      const width = feature.offsetWidth;
       
-      // 1. Zoom Logic (Matches snippet)
-      // Initial CSS size is 250% (2.5). 
-      // Formula: newSize = (width * 2.5) - (fromTop / 3)
-      const initialScale = 0.5; 
-      const startSize = width * initialScale;
-      
-      // Calculate new size but don't let it shrink smaller than the container width
-      let newSize = startSize - (fromTop / 3);
-      if (newSize < width) newSize = width;
+      // --- 1. Background Image Animation (Existing Logic) ---
+      if (feature) {
+          const width = feature.offsetWidth;
+          const initialScale = 0.5; // Reduced scale as requested previously
+          const startSize = width * initialScale;
+          
+          let newSize = startSize - (fromTop / 3);
+          if (newSize < width) newSize = width;
 
-      // 2. Blur Logic
-      // Snippet: blur = 0 + (fromTop / 100)
-      const blurValue = fromTop / 100;
+          const blurValue = fromTop / 100;
+          const opacityValue = Math.max(0, 1 - (fromTop / window.innerHeight) * 1.3);
 
-      // 3. Opacity Logic
-      // Snippet: 1 - ((fromTop / htmlHeight) * 1.3)
-      // We use window.innerHeight for smoother viewport-based fading
-      const opacityValue = Math.max(0, 1 - (fromTop / window.innerHeight) * 1.3);
+          feature.style.backgroundSize = `${newSize}px`;
+          feature.style.filter = `blur(${blurValue}px)`;
+          feature.style.opacity = opacityValue;
+      }
 
-      // Apply the styles directly to the DOM element
-      feature.style.backgroundSize = `${newSize}px`;
-      feature.style.filter = `blur(${blurValue}px)`;
-      feature.style.opacity = opacityValue;
+      // --- 2. Scroll Indicator Fade Logic (New Logic) ---
+      // Fade out quickly (within first 200px of scrolling)
+      if (scrollIndicator) {
+          const indicatorOpacity = Math.max(0, 1 - (fromTop / 200));
+          scrollIndicator.style.opacity = indicatorOpacity;
+          
+          // Optimization: Hide visibility completely if opacity is 0
+          scrollIndicator.style.visibility = indicatorOpacity <= 0 ? 'hidden' : 'visible';
+      }
     };
 
-    // Run once on mount to set initial state
+    // Run once on mount
     updateStyles();
 
-    // Attach listener
+    // Attach listeners
     window.addEventListener('scroll', updateStyles);
-    window.addEventListener('resize', updateStyles); // Also update on resize
+    window.addEventListener('resize', updateStyles); 
     
     return () => {
         window.removeEventListener('scroll', updateStyles);
@@ -64,15 +66,19 @@ const AboutPage = ({ onNavigate }) => {
         </button>
       </div>
 
-      {/* Background Feature Image 
-         - Uses the imported local image
-         - Ref is attached here for the animation logic
-      */}
+      {/* Background Feature Image */}
       <div 
         className="feature" 
         ref={featureRef} 
         style={{ backgroundImage: `url(${backgroundImg})` }}
       ></div>
+
+      {/* --- NEW: Scroll Down Indicator --- */}
+      <div className="scroll-indicator" ref={scrollIndicatorRef}>
+          <p>Scroll to Explore</p>
+          <span className="material-symbols-outlined">keyboard_double_arrow_down</span>
+      </div>
+      {/* ---------------------------------- */}
 
       {/* Main Content */}
       <div className="about-content">
