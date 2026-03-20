@@ -1,0 +1,26 @@
+{
+  "name": "knowly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "server": "cd backend && nodemon index.js",
+  "client": "cd vite-project && npm run dev",
+  "dev": "concurrently \"npm run server\" \"npm run client\""
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DilumPal/knowlyweb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/DilumPal/knowlyweb/issues"
+  },
+  "homepage": "https://github.com/DilumPal/knowlyweb#readme",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
