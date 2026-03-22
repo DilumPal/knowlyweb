@@ -1,12 +1,11 @@
 /* --- Global Container & Background --- */
-.login-container {
+.signup-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background-color: #f4f7f6;
     font-family: 'Inter', sans-serif;
-
     background-image: url('login.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -15,29 +14,21 @@
 }
 
 /* --- Form Card (Glassmorphism) --- */
-.login-form {
-    /* Transparent glass background */
+.signup-form {
     background: rgba(255, 255, 255, 0.2); 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-
     padding: 40px 30px;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-
     width: 90%;
     max-width: 380px;
     height: auto;
-
     display: flex;
     flex-direction: column;
-    
     position: relative;
     z-index: 10;
-
-    animation:
-        fadeInUp 1s ease-out forwards,
-        breathingGlow 6s ease-in-out infinite;
+    animation: fadeInUp 1s ease-out forwards, breathingGlow 6s ease-in-out infinite;
     animation-delay: 0s, 1s;
 }
 
@@ -53,21 +44,21 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* --- Typography (RESTORED ORIGINAL COLORS) --- */
-.login-form h2 {
+/* --- Typography (Original Dark Colors) --- */
+.signup-form h2 {
     margin-bottom: 8px;
-    color: #333; /* Restored original dark gray */
+    color: #333; 
     text-align: center;
 }
 
-.login-form p {
-    color: #333; /* Restored original dark gray */
+.signup-form p {
+    color: #333; 
     font-size: 14px;
     text-align: center;
     margin-bottom: 24px;
 }
 
-/* --- Input Group Styling --- */
+/* --- Input Group Styling (Glass Effect) --- */
 .input-group {
     margin-bottom: 15px;
     text-align: left;
@@ -78,23 +69,18 @@
     margin-bottom: 5px;
     font-size: 14px;
     font-weight: 600;
-    color: #555; /* Restored original gray */
+    color: #555; 
 }
 
 .input-group input {
     width: 100%;
     padding: 12px;
-    /* This makes the input field itself look like glass */
     background: rgba(255, 255, 255, 0.3); 
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     font-size: 16px;
-    color: #333; /* Text you type will be dark */
+    color: #333; 
     box-sizing: border-box;
-}
-
-.input-group input::placeholder {
-    color: rgba(0, 0, 0, 0.4); /* Darker placeholder for glass */
 }
 
 .input-group input:focus {
@@ -103,8 +89,8 @@
     background: rgba(255, 255, 255, 0.4);
 }
 
-/* --- Button Styling --- */
-.login-form button[type="submit"] {
+/* --- Button & Link --- */
+.signup-button {
     width: 100%;
     padding: 12px;
     background-color: #646cff;
@@ -118,19 +104,16 @@
     margin-top: 10px;
 }
 
-.login-form button[type="submit"]:hover {
-    background-color: #535bf2;
-}
+.signup-button:hover { background-color: #535bf2; }
 
-/* --- Footer Link Styling --- */
-.signup-link {
+.login-link {
     margin-top: 20px;
     font-size: 13px;
-    color: #333; /* Restored original dark gray */
+    color: #333;
     text-align: center;
 }
 
-.signup-link .link-text {
+.login-link .link-text {
     cursor: pointer;
     color: #646cff;
     margin-left: 5px;

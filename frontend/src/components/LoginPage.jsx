@@ -51,6 +51,17 @@ const LoginPage = ({ onNavigate }) => {
                 </div>
                 
                 <button type="submit">Login and Go to Start Page</button>
+
+                {/* NEW: Link to Signup Page */}
+                <p className="signup-link">
+                    Don't have an account? 
+                    <span 
+                        className="link-text" 
+                        onClick={() => onNavigate('signup')}
+                    >
+                        Sign up
+                    </span>
+                </p>
             </form>
         </div>
     );

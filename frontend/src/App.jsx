@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import StartPage from './components/StartPage';
 import LoginPage from './components/LoginPage';
 import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage'; // Import the new page
+import AboutPage from './components/AboutPage';
+import SignupPage from './components/SignupPage';
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState('start');
@@ -47,9 +48,13 @@ const App = () => {
         <HomePage onNavigate={handleNavigate} />
       )}
 
-      {/* ADD THIS BLOCK FOR THE ABOUT PAGE */}
       {currentPage === 'about' && (
         <AboutPage onNavigate={handleNavigate} />
+      )}
+
+      {/* Correctly passing handleNavigate to the SignupPage component */}
+      {currentPage === 'signup' && (
+        <SignupPage onNavigate={handleNavigate} />
       )}
     </>
   );
