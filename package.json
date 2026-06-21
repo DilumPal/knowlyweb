@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "server": "cd backend && nodemon index.js",
-  "client": "cd vite-project && npm run dev",
+  "server": "cd backend && npm run dev",
+  "client": "cd frontend && npm run dev",
   "dev": "concurrently \"npm run server\" \"npm run client\""
 },
   "repository": {
